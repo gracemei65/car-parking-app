@@ -1,7 +1,8 @@
 package com.gracie.demo.service;
 
-import com.gracie.multithreading.entity.Student;
-import com.gracie.multithreading.repository.StudentRepository;
+
+import com.gracie.demo.entity.Student;
+import com.gracie.demo.repository.StudentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
