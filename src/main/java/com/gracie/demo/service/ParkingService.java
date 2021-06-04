@@ -1,15 +1,14 @@
-package com.gracie.parking.service;
+package com.gracie.demo.service;
 
-import com.gracie.parking.entity.ParkingSpace;
-import com.gracie.parking.entity.Vehicle;
-import com.gracie.parking.exception.ParkingException;
-import com.gracie.parking.repository.ParkingRepository;
+import com.gracie.demo.entity.ParkingSpace;
+import com.gracie.demo.entity.Vehicle;
+import com.gracie.demo.exception.ParkingException;
+import com.gracie.demo.repository.ParkingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ParkingService {

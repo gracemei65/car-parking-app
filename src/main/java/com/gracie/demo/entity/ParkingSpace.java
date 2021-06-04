@@ -1,4 +1,4 @@
-package com.gracie.parking.entity;
+package com.gracie.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

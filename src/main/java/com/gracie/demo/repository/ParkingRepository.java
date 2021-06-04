@@ -1,6 +1,6 @@
-package com.gracie.parking.repository;
+package com.gracie.demo.repository;
 
-import com.gracie.parking.entity.ParkingSpace;
+import com.gracie.demo.entity.ParkingSpace;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

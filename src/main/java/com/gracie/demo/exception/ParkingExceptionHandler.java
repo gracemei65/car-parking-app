@@ -1,4 +1,4 @@
-package com.gracie.parking.exception;
+package com.gracie.demo.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

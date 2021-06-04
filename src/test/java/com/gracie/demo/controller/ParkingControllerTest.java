@@ -1,11 +1,11 @@
-package com.gracie.parking.controller;
+package com.gracie.demo.controller;
 
-import com.gracie.parking.entity.ParkingSpace;
-import com.gracie.parking.entity.Size;
-import com.gracie.parking.entity.Vehicle;
-import com.gracie.parking.exception.ParkingException;
-import com.gracie.parking.repository.ParkingRepository;
-import com.gracie.parking.service.ParkingService;
+import com.gracie.demo.entity.ParkingSpace;
+import com.gracie.demo.entity.Size;
+import com.gracie.demo.entity.Vehicle;
+import com.gracie.demo.exception.ParkingException;
+import com.gracie.demo.repository.ParkingRepository;
+import com.gracie.demo.service.ParkingService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,4 +1,4 @@
-package com.gracie.parking.entity;
+package com.gracie.demo.entity;
 
 public enum Size {
     SMALL(1), MEDIUM(2), LARGE(3);

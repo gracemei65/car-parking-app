@@ -1,8 +1,8 @@
-package com.gracie.parking.service;
+package com.gracie.demo.service;
 
-import com.gracie.parking.entity.ParkingSpace;
-import com.gracie.parking.entity.Size;
-import com.gracie.parking.repository.ParkingRepository;
+import com.gracie.demo.entity.ParkingSpace;
+import com.gracie.demo.entity.Size;
+import com.gracie.demo.repository.ParkingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
