@@ -1,10 +1,10 @@
 package com.gracie.demo.repository;
 
-
-import com.gracie.demo.entity.Student;
+import com.gracie.demo.entity.ParkingSpace;
+import com.gracie.demo.entity.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+public interface VehicleRepository extends JpaRepository<Vehicle, Integer> {
 }

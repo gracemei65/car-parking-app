@@ -24,12 +24,13 @@ public class ParkingController {
     public List<ParkingSpace> getAvailableParkingSpaces( ){
 
         List<ParkingSpace> spaces=repository.findAll();
-        return spaces.stream().filter(s->!s.getIsOccupied()).collect(Collectors.toList());
+        return spaces.stream().filter(s->!s.isOccupied()).collect(Collectors.toList());
     }
 
     @PostMapping
     public Vehicle parkingVechicle(@RequestBody Vehicle v){
-           return service.parkingVechicle(v);
+
+        return service.parkingVechicle(v);
     }
 
     @DeleteMapping
