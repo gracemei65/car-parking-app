@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Enumerated(EnumType.STRING)
     private Size vehicleSize;
@@ -23,11 +23,11 @@ public class Vehicle {
         this.vehicleSize = vehicleSize;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -21,20 +21,20 @@ public class ParkingController {
     ParkingService service;
 
     @GetMapping
-    public List<ParkingSpace> getAvailableParkingSpaces( ){
+    public List<ParkingSpace> getAvailableParkingSpaces() {
 
-        List<ParkingSpace> spaces=repository.findAll();
-        return spaces.stream().filter(s->!s.isOccupied()).collect(Collectors.toList());
+        List<ParkingSpace> spaces = repository.findAll();
+        return spaces.stream().filter(s -> !s.isOccupied()).collect(Collectors.toList());
     }
 
     @PostMapping
-    public Vehicle parkingVechicle(@RequestBody Vehicle v){
+    public Vehicle parkingVechicle(@RequestBody Vehicle v) {
 
         return service.parkingVechicle(v);
     }
 
-    @DeleteMapping
-    public void unparkingVechicle(Vehicle v){
-         service.unparkingVechicle(v);
+    @DeleteMapping("/{vehicleId}")
+    public String unparkingVechicle(@PathVariable("vehicleId") int vehicleId) {
+        return service.unparkingVechicle(vehicleId);
     }
 }
