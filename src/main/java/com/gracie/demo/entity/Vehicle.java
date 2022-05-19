@@ -13,7 +13,8 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private Size vehicleSize;
 
-    @OneToOne(mappedBy = "vehicle")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parkingspace_id", referencedColumnName = "id")
     private ParkingSpace parkingSpace;
 
     public Vehicle() {

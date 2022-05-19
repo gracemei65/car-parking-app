@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/parking")
+@RequestMapping
 public class ParkingController {
 
     @Autowired
@@ -27,14 +27,14 @@ public class ParkingController {
         return spaces.stream().filter(s -> !s.isOccupied()).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/parking")
     public Vehicle parkingVechicle(@RequestBody Vehicle v) {
 
         return service.parkingVechicle(v);
     }
 
-    @DeleteMapping("/{vehicleId}")
-    public String unparkingVechicle(@PathVariable("vehicleId") int vehicleId) {
-        return service.unparkingVechicle(vehicleId);
+    @DeleteMapping("unparking/{parkingSpaceId}")
+    public String unparkingVechicle(@PathVariable("parkingSpaceId") int parkingSpaceId) {
+        return service.unparkingVechicle(parkingSpaceId);
     }
 }

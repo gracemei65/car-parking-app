@@ -19,9 +19,6 @@ public class ParkingSpace {
 
     private boolean isOccupied;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
-    private Vehicle vehicle;
 
     public ParkingSpace() {
     }
@@ -53,13 +50,5 @@ public class ParkingSpace {
 
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
     }
 }

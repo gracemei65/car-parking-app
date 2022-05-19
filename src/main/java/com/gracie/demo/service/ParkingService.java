@@ -30,24 +30,21 @@ public class ParkingService {
         v.setParkingSpace(space);
         vehicleRepository.save(v);
 
-        space.setVehicle(v);
         space.setOccupied(true);
         parkingRepository.save(space);
         return v;
     }
 
-    public String unparkingVechicle(int vehicleId) {
+    public String unparkingVechicle(int parkingSpaceId) {
 
-        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new ParkingException("vechicle is not found "));
+        ParkingSpace space = parkingRepository.findById(parkingSpaceId).orElseThrow(() -> new ParkingException("space is not found "));
+        space.setOccupied(false);
+        parkingRepository.save(space);
 
+        Vehicle vehicle = vehicleRepository.findByParkingSpaceId(parkingSpaceId).orElseThrow(() -> new ParkingException("vechicle is not found "));
 
+        vehicleRepository.deleteById(vehicle.getId());
 
-//        List<ParkingSpace> spaces = parkingRepository.findAll();
-//        ParkingSpace space = spaces.stream().filter(s -> s.getVehicle().getId() == (v.getId())).findFirst().orElseThrow(() -> new ParkingException("your car not parking yet"));
-
-        vehicleRepository.deleteById(vehicleId);
-//        space.setOccupied(false);
-//        parkingRepository.save(space);
         return "unparking the vehicle successfully ! ";
 
     }
