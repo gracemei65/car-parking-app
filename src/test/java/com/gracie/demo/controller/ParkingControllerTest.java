@@ -35,12 +35,12 @@ class ParkingControllerTest {
     void parkingVechicleWithAvailableTheSameSize() {
 
         List<ParkingSpace> spaces = Arrays.asList(
-                new ParkingSpace(Size.SMALL, false, -1),
-                new ParkingSpace(Size.MEDIUM, false, -1),
-                new ParkingSpace(Size.LARGE, false, -1)
+                new ParkingSpace(Size.SMALL, false),
+                new ParkingSpace(Size.MEDIUM, false),
+                new ParkingSpace(Size.LARGE, false)
         );
 
-        Vehicle v = new Vehicle(Size.SMALL, -1);
+        Vehicle v = new Vehicle(Size.SMALL);
         Mockito.when(service.parkingVechicle(v)).thenReturn(v);
 
         Vehicle result = controller.parkingVechicle(v);
@@ -51,12 +51,12 @@ class ParkingControllerTest {
     void parkingVechicleWithAvailableBiggerSize() {
 
         List<ParkingSpace> spaces = Arrays.asList(
-                new ParkingSpace(Size.SMALL, true, -1),
-                new ParkingSpace(Size.MEDIUM, false, -1),
-                new ParkingSpace(Size.LARGE, false, -1)
+                new ParkingSpace(Size.SMALL, true),
+                new ParkingSpace(Size.MEDIUM, false),
+                new ParkingSpace(Size.LARGE, false)
         );
 
-        Vehicle v = new Vehicle(Size.SMALL, -1);
+        Vehicle v = new Vehicle(Size.SMALL);
         Mockito.when(service.parkingVechicle(v)).thenReturn(v);
 
         Vehicle result = controller.parkingVechicle(v);
@@ -67,12 +67,12 @@ class ParkingControllerTest {
     void parkingVechicleNotAvailable() {
 
         List<ParkingSpace> spaces = Arrays.asList(
-                new ParkingSpace(Size.SMALL, false, -1),
-                new ParkingSpace(Size.MEDIUM, false, -1),
-                new ParkingSpace(Size.LARGE, true, -1)
+                new ParkingSpace(Size.SMALL, false),
+                new ParkingSpace(Size.MEDIUM, false),
+                new ParkingSpace(Size.LARGE, true)
         );
 
-        Vehicle v = new Vehicle(Size.LARGE, -1);
+        Vehicle v = new Vehicle(Size.LARGE);
         Mockito.when(service.parkingVechicle(v)).thenThrow(new ParkingException("o more parking space for your vehicle"));
 
         Assertions.assertThrows(ParkingException.class, () -> controller.parkingVechicle(v));

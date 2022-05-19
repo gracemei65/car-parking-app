@@ -24,13 +24,13 @@ public class ParkingSpaceInitializer implements CommandLineRunner {
         log.info(" create a few parking spaces");
 
         List<ParkingSpace> spaces = Arrays.asList(
-                new ParkingSpace(Size.SMALL, false, -1),
-                new ParkingSpace(Size.SMALL, false, -1),
-                new ParkingSpace(Size.MEDIUM, false, -1),
-                new ParkingSpace(Size.MEDIUM, false, -1),
-                new ParkingSpace(Size.LARGE, false, -1),
-                new ParkingSpace(Size.LARGE, false, -1) ,
-                new ParkingSpace(Size.LARGE, false, -1)
+                new ParkingSpace(Size.SMALL, false),
+                new ParkingSpace(Size.SMALL, false),
+                new ParkingSpace(Size.MEDIUM, false),
+                new ParkingSpace(Size.MEDIUM, false),
+                new ParkingSpace(Size.LARGE, false),
+                new ParkingSpace(Size.LARGE, false),
+                new ParkingSpace(Size.LARGE, false)
 
         );
 

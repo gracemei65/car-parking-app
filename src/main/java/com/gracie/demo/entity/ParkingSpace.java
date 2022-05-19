@@ -18,16 +18,17 @@ public class ParkingSpace {
     private Size spaceSize;
 
     private boolean isOccupied;
-    
-    private int vechicleId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
+    private Vehicle vehicle;
 
     public ParkingSpace() {
     }
 
-    public ParkingSpace(Size spaceSize, boolean isOccupied, int vechicleId) {
+    public ParkingSpace(Size spaceSize, boolean isOccupied) {
         this.spaceSize = spaceSize;
         this.isOccupied = isOccupied;
-        this.vechicleId = vechicleId;
     }
 
     public long getId() {
@@ -54,11 +55,11 @@ public class ParkingSpace {
         isOccupied = occupied;
     }
 
-    public int getVechicleId() {
-        return vechicleId;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVechicleId(int vechicleId) {
-        this.vechicleId = vechicleId;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }

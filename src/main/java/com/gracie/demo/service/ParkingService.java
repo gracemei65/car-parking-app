@@ -4,6 +4,7 @@ import com.gracie.demo.entity.ParkingSpace;
 import com.gracie.demo.entity.Vehicle;
 import com.gracie.demo.exception.ParkingException;
 import com.gracie.demo.repository.ParkingRepository;
+import com.gracie.demo.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,29 +15,35 @@ import java.util.List;
 public class ParkingService {
 
     @Autowired
-    ParkingRepository repository;
+    ParkingRepository parkingRepository;
+    @Autowired
+    VehicleRepository vehicleRepository;
 
     public Vehicle parkingVechicle(Vehicle v) {
 
-        int size=v.getVehicleSize().getSize();
-        int size1 =v.getVehicleSize().ordinal();
-        List<ParkingSpace> spaces = repository.findAll();
-        ParkingSpace space = spaces.stream().filter(s -> !s.isOccupied() && (s.getSpaceSize().getSize()>= v.getVehicleSize().getSize()))
+        int size = v.getVehicleSize().getSize();
+        int size1 = v.getVehicleSize().ordinal();
+        List<ParkingSpace> spaces = parkingRepository.findAll();
+        ParkingSpace space = spaces.stream().filter(s -> !s.isOccupied() && (s.getSpaceSize().getSize() >= v.getVehicleSize().getSize()))
                 .sorted(Comparator.comparing(ParkingSpace::getSpaceSize)).findFirst().orElseThrow(() -> new ParkingException("no more parking space for your vehicle"));
 
+        v.setParkingSpace(space);
+        vehicleRepository.save(v);
+
+        space.setVehicle(v);
         space.setOccupied(true);
-        repository.save(space);
-        v.setParkingSpaceId(space.getId());
+        parkingRepository.save(space);
         return v;
     }
 
     public void unparkingVechicle(Vehicle v) {
 
-        List<ParkingSpace> spaces = repository.findAll();
-        ParkingSpace space = spaces.stream().filter(s -> s.getVechicleId()==(v.getId())).findFirst().orElseThrow(() -> new ParkingException("your car not parking yet"));
+        List<ParkingSpace> spaces = parkingRepository.findAll();
+        ParkingSpace space = spaces.stream().filter(s -> s.getVehicle().getId() == (v.getId())).findFirst().orElseThrow(() -> new ParkingException("your car not parking yet"));
+
+        vehicleRepository.delete(v);
         space.setOccupied(false);
-        space.setVechicleId(-1);
-        repository.save(space);
+        parkingRepository.save(space);
 
     }
 

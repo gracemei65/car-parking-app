@@ -13,14 +13,14 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private Size vehicleSize;
 
-    private long parkingSpaceId;
+    @OneToOne(mappedBy = "vehicle")
+    private ParkingSpace parkingSpace;
 
     public Vehicle() {
     }
 
-    public Vehicle(Size vehicleSize, long parkingSpaceId) {
+    public Vehicle(Size vehicleSize) {
         this.vehicleSize = vehicleSize;
-        this.parkingSpaceId = parkingSpaceId;
     }
 
     public long getId() {
@@ -39,11 +39,11 @@ public class Vehicle {
         this.vehicleSize = vehicleSize;
     }
 
-    public long getParkingSpaceId() {
-        return parkingSpaceId;
+    public ParkingSpace getParkingSpace() {
+        return parkingSpace;
     }
 
-    public void setParkingSpaceId(long parkingSpaceId) {
-        this.parkingSpaceId = parkingSpaceId;
+    public void setParkingSpace(ParkingSpace parkingSpace) {
+        this.parkingSpace = parkingSpace;
     }
 }
