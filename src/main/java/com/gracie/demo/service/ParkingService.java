@@ -22,7 +22,7 @@ public class ParkingService {
     public Vehicle parkingVechicle(Vehicle v) {
 
         int size = v.getVehicleSize().getSize();
-        int size1 = v.getVehicleSize().ordinal();
+
         List<ParkingSpace> spaces = parkingRepository.findAll();
         ParkingSpace space = spaces.stream().filter(s -> !s.isOccupied() && (s.getSpaceSize().getSize() >= v.getVehicleSize().getSize()))
                 .sorted(Comparator.comparing(ParkingSpace::getSpaceSize)).findFirst().orElseThrow(() -> new ParkingException("no more parking space for your vehicle"));
@@ -37,11 +37,11 @@ public class ParkingService {
 
     public String unparkingVechicle(int parkingSpaceId) {
 
-        ParkingSpace space = parkingRepository.findById(parkingSpaceId).orElseThrow(() -> new ParkingException("space is not found "));
+        ParkingSpace space = parkingRepository.findById(parkingSpaceId).orElseThrow(() -> new ParkingException("Parking space is not found "));
         space.setOccupied(false);
         parkingRepository.save(space);
 
-        Vehicle vehicle = vehicleRepository.findByParkingSpaceId(parkingSpaceId).orElseThrow(() -> new ParkingException("vechicle is not found "));
+        Vehicle vehicle = vehicleRepository.findByParkingSpaceId(parkingSpaceId).orElseThrow(() -> new ParkingException("Vechicle is not found "));
 
         vehicleRepository.deleteById(vehicle.getId());
 
